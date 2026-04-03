@@ -1,0 +1,10 @@
+plugin: netbox.netbox.nb_inventory
+api_endpoint: http://k8s-netbox-netboxin-c0519ddf3b-602899348.us-east-1.elb.amazonaws.com
+token: CF7gueK8fqOW0Km7fgCAKOA1bLKVFyMYo1rTmEny
+validate_certs: false
+
+group_by:
+  - device_roles
+
+query_filters:
+  - role: k8s-node
