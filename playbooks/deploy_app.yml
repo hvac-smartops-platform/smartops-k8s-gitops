@@ -1,0 +1,15 @@
+---
+- name: Deploy app to Kubernetes
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Apply Flask deployment
+      kubernetes.core.k8s:
+        state: present
+        src: ../flask-deployment.yaml
+
+    - name: Apply Flask service
+      kubernetes.core.k8s:
+        state: present
+        src: ../flask-service.yaml

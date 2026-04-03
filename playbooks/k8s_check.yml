@@ -1,0 +1,16 @@
+---
+- name: Check Kubernetes Pods
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Get pods in smartops namespace
+      kubernetes.core.k8s_info:
+        kind: Pod
+        namespace: smartops
+      register: pod_info
+
+    - name: Show pods
+      debug:
+        var: pod_info.resources

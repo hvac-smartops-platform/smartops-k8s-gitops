@@ -1,0 +1,38 @@
+---
+- name: Check SmartOps cluster health
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /home/owner/smartops-k8s-gitops/.venv/bin/python
+
+  tasks:
+    - name: Get pods in smartops namespace
+      kubernetes.core.k8s_info:
+        kind: Pod
+        namespace: smartops
+      register: smartops_pods
+
+    - name: Get pods in monitoring namespace
+      kubernetes.core.k8s_info:
+        kind: Pod
+        namespace: monitoring
+      register: monitoring_pods
+
+    - name: Get pods in netbox namespace
+      kubernetes.core.k8s_info:
+        kind: Pod
+        namespace: netbox
+      register: netbox_pods
+
+    - name: Show smartops pod health
+      debug:
+        msg: "{{ smartops_pods.resources | json_query('[].{name: metadata.name, phase: status.phase, node: spec.nodeName}') }}"
+
+    - name: Show monitoring pod health
+      debug:
+        msg: "{{ monitoring_pods.resources | json_query('[].{name: metadata.name, phase: status.phase, node: spec.nodeName}') }}"
+
+    - name: Show netbox pod health
+      debug:
+        msg: "{{ netbox_pods.resources | json_query('[].{name: metadata.name, phase: status.phase, node: spec.nodeName}') }}"
+
