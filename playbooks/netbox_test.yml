@@ -1,0 +1,8 @@
+---
+- name: Test NetBox dynamic inventory
+  hosts: device_roles_k8s-node
+  gather_facts: false
+  tasks:
+    - name: Show inventory hostname
+      debug:
+        msg: "Discovered host from NetBox: {{ inventory_hostname }}"
