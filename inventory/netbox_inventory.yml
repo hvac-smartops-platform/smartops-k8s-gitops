@@ -1,6 +1,6 @@
 plugin: netbox.netbox.nb_inventory
 api_endpoint: http://k8s-netbox-netboxin-c0519ddf3b-602899348.us-east-1.elb.amazonaws.com
-token: CF7gueK8fqOW0Km7fgCAKOA1bLKVFyMYo1rTmEny
+token: YOUR_NETBOX_TOKEN
 validate_certs: false
 
 group_by:
@@ -8,3 +8,4 @@ group_by:
 
 query_filters:
   - role: k8s-node
+
