@@ -4,4 +4,7 @@ __pycache__/
 .aws/
 .kube/
 
+*.zip
+aws/
+
 
