@@ -3,16 +3,8 @@ __pycache__/
 *.pyc
 .aws/
 .kube/
-<<<<<<< HEAD
-
-*.zip
-aws/
-
-
-=======
 *.zip
 aws/
 helm-temp/
 eksctl-temp/
 *.exe
->>>>>>> a1ae37e (Sync Kubernetes manifests, NetBox, Grafana, and inventory updates)
