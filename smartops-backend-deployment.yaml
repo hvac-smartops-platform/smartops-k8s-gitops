@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartops-backend
+  namespace: smartops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: smartops-backend
+  template:
+    metadata:
+      labels:
+        app: smartops-backend
+    spec:
+      containers:
+        - name: smartops-backend
+          image: adnan1978/smartops-backend:1.0
+          ports:
+            - containerPort: 8000
