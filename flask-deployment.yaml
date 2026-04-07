@@ -15,6 +15,12 @@ spec:
     spec:
       containers:
         - name: flask-app
-          image: adnan1978/smartops-flask-app:1.0
+          image: adnan1978/smartops-flask-app:1.1
           ports:
             - containerPort: 5000
+          env:
+            - name: BACKEND_API_URL
+              value: "http://smartops-backend-service.smartops.svc.cluster.local"
+
+
+
