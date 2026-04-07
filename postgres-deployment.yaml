@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartops-postgres
+  namespace: smartops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smartops-postgres
+  template:
+    metadata:
+      labels:
+        app: smartops-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: smartops
+            - name: POSTGRES_USER
+              value: smartops
+            - name: POSTGRES_PASSWORD
+              value: smartops123
